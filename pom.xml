@@ -1,0 +1,239 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.terrameta</groupId>
+	<artifactId>plasma-flux</artifactId>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
+	<name>Plasma Flux</name>
+	<description></description>
+	<url>http://plasma-framework.org</url>
+	<licenses>
+		<license>
+			<name>Plasma License</name>
+			<url>https://github.com/plasma-framework/plasma-flux/LICENSE</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<scm>
+		<url>https://github.com/plasma-framework/plasma-flux</url>
+		<connection></connection>
+	</scm>
+	<developers>
+		<developer>
+			<id>scinnamond</id>
+			<name>Scott Cinnamond</name>
+			<email>scinnamond@gmail.com</email>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>maven2-repository.dev.java.net</id>
+			<name>Java.net Maven 2 Repository</name>
+			<url>http://download.java.net/maven/2</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven2-repository.dev.java.net</id>
+			<name>Java.net Maven 2 Repository</name>
+			<url>http://download.java.net/maven/2</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<dependencies>
+         <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+	    <dependency>
+	      <groupId>org.testng</groupId>
+	      <artifactId>testng</artifactId>
+	      <version>6.9.8</version>
+	      <scope>test</scope>
+	    </dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.9</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+	    <dependency>
+		    <groupId>io.reactivex.rxjava2</groupId>
+		    <artifactId>rxjava</artifactId>
+		    <version>2.0.5</version>
+	    </dependency>
+ 	</dependencies>
+	<build>
+		<finalName>${project.artifactId}-${project.version</finalName>
+		<plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.4</version>
+				<executions>
+				      
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration> 
+						     
+							<additionalparam>-Xdoclint:none</additionalparam>
+							  
+						</configuration>
+					</execution>
+					  
+					<execution>
+						<id>aggregate</id>
+						<goals>
+							<goal>aggregate</goal>
+						</goals>
+						<phase>site</phase>
+						<configuration>
+						 
+							<additionalparam>-Xdoclint:none</additionalparam>
+						 
+							<!-- does not work with java 1.8 and javadoc plugin  -->
+							<!-- 
+							<doclet>ydoc.doclets.YStandard</doclet>
+                            <docletPath>C:/yworks-uml-doclet-3.0_01-jdk1.5/lib/ydoc.jar:C:/yworks-uml-doclet-3.0_01-jdk1.5/resources</docletPath>
+                            <additionalparam>-umlautogen</additionalparam>
+                             -->	
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+                          
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.4</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin> 			 
+             
+			<!-- Release Plugin (Update version in POM before/after release, create 
+				tag, deploy) to try: mvn release:prepare -DdryRun=true && mvn release:clean 
+				to perform: mvn release:prepare release:perform Read http://nexus.sonatype.org/oss-repository-hosting.html#3 
+				for instructions on releasing to this project's Sonatype repository -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.0-beta-7</version>
+			</plugin>
+		</plugins>
+	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.4</version>
+				<configuration>
+					<!-- Default configuration for all reports -->
+
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<id>non-aggregate</id>
+						<configuration>
+						 
+							<additionalparam>-Xdoclint:none</additionalparam>
+							 
+						</configuration>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+					</reportSet>
+					<reportSet>
+						<id>aggregate</id>
+						<configuration>
+						     
+							<additionalparam>-Xdoclint:none</additionalparam>
+							 
+							<!-- does not work with java 1.8 and javadoc plugin  -->
+							<!-- 
+							<doclet>ydoc.doclets.YStandard</doclet>
+                            <docletPath>C:/yworks-uml-doclet-3.0_01-jdk1.5/lib/ydoc.jar:C:/yworks-uml-doclet-3.0_01-jdk1.5/resources</docletPath>
+                            <additionalparam>-umlautogen</additionalparam>
+                             -->	
+						</configuration>
+						<reports>
+							<report>aggregate</report>
+						</reports>
+					</reportSet>
+
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
+	<distributionManagement>
+		<!-- My project's Sonatype repository to be used by the release plugin -->
+		<repository>
+			<id>sonatype-nexus-staging-and-release</id>
+			<name>Nexus Staging Repository</name>
+			<!-- giving a 400 error <url>https://oss.sonatype.org/content/groups/public</url> -->
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshot</id>
+			<name>Nexus Snapshot Repository</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<!--repositories> <repository> <id>ibiblio.org</id> <name>ibiblio Mirror 
+		of http://repo1.maven.org/maven2/</name> <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url> 
+		</repository> </repositories -->
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
