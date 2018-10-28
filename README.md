@@ -1,2 +1,4 @@
 # plasma-flux
-A "pipes-and-filters" style dataflow framework based on RxJava which streamlines assembly and execution of complex, multi-stage flows for use in e.g. database (physical operator) execution engines. 
+A dataflow framework based on RxJava with a "Pipes and Filters" abstraction facilitating multi-stage flows composed of heterogeneous types and transformations of data. While RxJava alone is generally sufficient for composition of simple and some complex data flows, when heterogeneous types of data along with various transformatioans and filters, and multiple threading or concurrent contexts are involved, pure RxJava functional expressions become problamatic. Such complex multi-stage data flows typcially form large "tree", network or graph structures which are often found in various execution engines, such as database (physical) operator execution.
+
+Plasma Flux is a generic framework with does not prescribe the type(s) of data which compose a flow, but facilitates composition of complex flows using a "Pipes and Filters" abstraction where verious Producer and Consumer elements are linked through "Pipe" elements.     
