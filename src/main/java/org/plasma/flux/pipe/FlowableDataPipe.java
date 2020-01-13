@@ -1,13 +1,11 @@
 package org.plasma.flux.pipe;
 
 import io.reactivex.FlowableEmitter;
-import io.reactivex.ObservableEmitter;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Cancellable;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.plasma.flux.FluxRuntimeException;
 import org.plasma.flux.consumer.Consumer;
 
 public class FlowableDataPipe<T> implements FlowablePipe<T> {

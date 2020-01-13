@@ -6,7 +6,6 @@ import io.reactivex.ObservableOnSubscribe;
 
 import org.plasma.flux.FluxRuntimeException;
 import org.plasma.flux.consumer.SyncConsumer;
-import org.plasma.flux.pipe.Pipe;
 import org.plasma.flux.pipe.SyncDataPipe;
 import org.plasma.flux.pipe.SyncPipe;
 

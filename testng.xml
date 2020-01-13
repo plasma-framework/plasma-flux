@@ -4,6 +4,8 @@
   <test name="T1">
      <classes>
       <class name="org.plasma.flux.producer.ProducerTest"/>
+      <class name="org.plasma.flux.producer.FilterTest"/>
+      <class name="org.plasma.flux.producer.FlowableProducerTest"/>
     </classes>
   </test> 
 </suite>

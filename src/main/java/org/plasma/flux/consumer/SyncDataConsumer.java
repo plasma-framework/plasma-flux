@@ -1,6 +1,5 @@
 package org.plasma.flux.consumer;
 
-import org.plasma.flux.pipe.Pipe;
 import org.plasma.flux.pipe.SyncDataPipe;
 import org.plasma.flux.pipe.SyncPipe;
 

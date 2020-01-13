@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 
 public class FilterTest {
 	  private static Log log = LogFactory.getLog(FilterTest.class);
-
 	
 	@Test
 	public void testSimpleFilter() {

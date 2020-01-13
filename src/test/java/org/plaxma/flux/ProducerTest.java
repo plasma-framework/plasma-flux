@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class ProducerTest {
 	  private static Log log = LogFactory.getLog(ProducerTest.class);
-	//@Test
+	@Test
 	public void testSimple() {
 		DataFlow dataFlow = new DataFlow();
 		SyncProducer<Long> producer = new SyncProducer<Long>(dataFlow){

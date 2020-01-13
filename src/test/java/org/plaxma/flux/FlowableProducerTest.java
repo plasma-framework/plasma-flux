@@ -39,4 +39,37 @@ public class FlowableProducerTest {
 		dataFlow.execute();
 	}
 	
+	@Test
+	public void testMultiProducerSingleConsumer() {
+		DataFlow dataFlow = new DataFlow();
+		FlowableProducer<Long> producer1 = new FlowableProducer<Long>(dataFlow){
+			@Override
+			public void execute() {
+				 this.send(new Long(1));
+				 this.send(new Long(2));
+				 this.send(new Long(3));				
+				 this.complete(); 
+			}			
+		};			
+		FlowableProducer<Long> producer2 = new FlowableProducer<Long>(dataFlow){
+			@Override
+			public void execute() {
+				 this.send(new Long(4));
+				 this.send(new Long(5));
+				 this.send(new Long(6));				
+				 this.complete(); 
+			}			
+		};			
+
+		FlowableConsumer<Long> consumer = new FlowableDataConsumer<Long>() {
+			@Override
+			public void receive(Long input) {
+				log.info(input);
+			}			
+		};
+		
+		producer1.connect(consumer);
+		producer2.connect(consumer);
+		dataFlow.execute();
+	}
 }

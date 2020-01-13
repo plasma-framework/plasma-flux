@@ -2,9 +2,6 @@ package org.plasma.flux.consumer;
 
 import org.plasma.flux.pipe.FlowableDataPipe;
 import org.plasma.flux.pipe.FlowablePipe;
-import org.plasma.flux.pipe.Pipe;
-import org.plasma.flux.pipe.SyncDataPipe;
-import org.plasma.flux.pipe.SyncPipe;
 
 public abstract class FlowableDataConsumer<I> implements FlowableConsumer<I> {
     private FlowablePipe<I> input;

@@ -7,7 +7,7 @@
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 	<name>Plasma Flux</name>
-	<description></description>
+	<description>A dataflow framework based on RxJava with a "Pipes and Filters" abstraction for multi-stage flows, composed of heterogeneous types and transformations of data </description>
 	<url>http://plasma-framework.org</url>
 	<licenses>
 		<license>
@@ -89,7 +89,19 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-			<plugin>
+	      <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-source-plugin</artifactId>
+	        <executions>
+	            <execution>
+	                <id>attach-sources</id>
+	                <goals>
+	                    <goal>jar</goal>
+	                </goals>
+	            </execution>
+	        </executions>
+	      </plugin>
+ 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.10.4</version>
